@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply transition-colors duration-300;
+  }
+
+  body {
+    @apply bg-cream text-midnight font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+
+  /* Glassmorphism Effect */
+  .glass {
+    @apply bg-white/70 dark:bg-midnight-100/70 backdrop-blur-md border border-white/20 dark:border-midnight-50/20;
+  }
+
+  .glass-strong {
+    @apply bg-white/90 dark:bg-midnight-100/90 backdrop-blur-xl border border-white/30 dark:border-midnight-50/30;
+  }
+
+  /* Magnetic Button Effect */
+  .btn-magnetic {
+    @apply relative overflow-hidden transition-all duration-300 ease-out;
+    @apply hover:scale-105 hover:shadow-float-lg active:scale-95;
+  }
+
+  .btn-gold {
+    @apply bg-gold hover:bg-gold-500 text-midnight font-semibold px-8 py-4 rounded-full;
+    @apply shadow-lg hover:shadow-float transition-all duration-300;
+  }
+
+  /* Product Card Hover Effect */
+  .product-card {
+    @apply bg-white dark:bg-midnight-100 rounded-2xl overflow-hidden;
+    @apply shadow-lg hover:shadow-float-lg transition-all duration-500;
+    @apply hover:-translate-y-2;
+  }
+
+  /* Floating Animation */
+  .float-animation {
+    @apply animate-float;
+  }
+
+  /* Custom Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-cream-200 dark:bg-midnight-200;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-gold rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-gold-500;
+  }
+}
+
+@layer utilities {
+
+  /* Text Gradient */
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold-400 via-gold to-gold-600 bg-clip-text text-transparent;
+  }
+
+  /* Smooth Transitions */
+  .transition-smooth {
+    @apply transition-all duration-500 ease-in-out;
+  }
+
+  /* Image Cross-Fade */
+  .image-crossfade {
+    @apply transition-opacity duration-700 ease-in-out;
+  }
+}
+
+/* Dark Mode Specific Styles */
+.dark {
+  @apply bg-midnight text-cream;
+}
+
+.dark .product-card {
+  @apply bg-midnight-100 border border-midnight-50/10;
+}
+
+.dark .btn-gold {
+  @apply text-midnight;
+}
+
+/* Keyframe Animations */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* Skeleton Loader */
+.skeleton {
+  animation: shimmer 2s infinite linear;
+  background: linear-gradient(to right,
+      #f0f0f0 4%,
+      #e0e0e0 25%,
+      #f0f0f0 36%);
+  background-size: 1000px 100%;
+}
+
+.dark .skeleton {
+  background: linear-gradient(to right,
+      #1e293b 4%,
+      #334155 25%,
+      #1e293b 36%);
+  background-size: 1000px 100%;
+}
